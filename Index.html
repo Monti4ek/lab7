@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Магічна куля</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: radial-gradient(circle at center, #1a1a2e, #16213e);
+      color: white;
+      flex-direction: column;
+    }
+    .ball {
+      width: 250px;
+      height: 250px;
+      border-radius: 50%;
+      background: radial-gradient(circle at center, #4b0082, #000);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      margin-top: 20px;
+    }
+    .triangle {
+      width: 0;
+      height: 0;
+      border-left: 60px solid transparent;
+      border-right: 60px solid transparent;
+      border-bottom: 100px solid #800080;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    .answer {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      text-align: center;
+      font-size: 20px;
+      font-weight: bold;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 18px;
+      background-color: #6a0dad;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #8a2be2;
+    }
+  </style>
+</head>
+<body>
+  <script>
+    const answers = ["Так", "Ні", "Можливо", "Спробуй пізніше", "Без сумніву", "Не можу сказати"];
+
+    const question = "Чи буде завтра сонячно?";
+
+    const button = document.createElement("button");
+    button.textContent = question;
+    document.body.appendChild(button);
+
+    const ball = document.createElement("div");
+    ball.className = "ball";
+
+    const triangle = document.createElement("div");
+    triangle.className = "triangle";
+
+    const answerText = document.createElement("div");
+    answerText.className = "answer";
+
+    ball.appendChild(triangle);
+    ball.appendChild(answerText);
+    document.body.appendChild(ball);
+
+    button.addEventListener("click", () => {
+      const randomIndex = Math.floor(Math.random() * answers.length);
+      answerText.textContent = answers[randomIndex];
+    });
+  </script>
+</body>
+</html>
